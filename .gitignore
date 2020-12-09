@@ -1,3 +1,5 @@
 /target
 node_modules/
 node_modules_old/
+src/test/out
+src/test/out.js

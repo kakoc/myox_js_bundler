@@ -26,15 +26,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bf8dcb5b4bbaa28653b647d8c77bd4ed40183b48882e130c1f1ffb73de069fd7"
 
 [[package]]
-name = "arbitrary"
-version = "0.4.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "db55d72333851e17d572bec876e390cd3b11eb1ef53ae821dd9f3b653d2b4569"
-dependencies = [
- "derive_arbitrary",
-]
-
-[[package]]
 name = "arrayvec"
 version = "0.5.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -115,17 +106,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d9b5a2f4ac4969822c62224815d069952656cadc7084fdca9751e6d959189b72"
 dependencies = [
  "darling_core",
- "quote",
- "syn",
-]
-
-[[package]]
-name = "derive_arbitrary"
-version = "0.4.7"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b1a012b5e473dc912f0db0546a1c9c6a194ce8494feb66fa0237160926f9e0e6"
-dependencies = [
- "proc-macro2",
  "quote",
  "syn",
 ]
@@ -368,9 +348,9 @@ checksum = "13bd41f508810a131401606d54ac32a467c97172d74ba7662562ebba5ad07fa0"
 
 [[package]]
 name = "ordered-float"
-version = "1.1.0"
+version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3741934be594d77de1c8461ebcbbe866f585ea616a9753aa78f2bdc69f0e4579"
+checksum = "3305af35278dd29f46fcdd139e0b1fbfae2153f0e5928b39b035542dd31e37b7"
 dependencies = [
  "num-traits",
 ]
@@ -439,8 +419,6 @@ name = "playground"
 version = "0.1.0"
 dependencies = [
  "anyhow",
- "scoped-tls",
- "serde",
  "serde_json",
  "swc_common",
  "swc_ecma_ast",
@@ -756,7 +734,6 @@ version = "0.10.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1dd78e25ecc138a4667f5e5ea4d1a1c35d424477882b549d4fc011062eecd50e"
 dependencies = [
- "arbitrary",
  "ast_node",
  "cfg-if",
  "either",
@@ -777,7 +754,6 @@ version = "0.35.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "39d14f5b7769eb53a98276475ca72d188f5fa0fbf1819d3e9241b9e295ae0542"
 dependencies = [
- "arbitrary",
  "enum_kind",
  "is-macro",
  "num-bigint",
@@ -789,9 +765,9 @@ dependencies = [
 
 [[package]]
 name = "swc_ecma_codegen"
-version = "0.41.1"
+version = "0.41.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "96e655391ee7b9e7e01fde2f64bfc1dbcf8b712510fc09edc6c00de52704e6a9"
+checksum = "c50c98de260a5f33084211ce488c64acb052fc29851d917ee270fae498960128"
 dependencies = [
  "bitflags",
  "num-bigint",
@@ -800,6 +776,7 @@ dependencies = [
  "swc_common",
  "swc_ecma_ast",
  "swc_ecma_codegen_macros",
+ "swc_ecma_parser",
 ]
 
 [[package]]
@@ -851,9 +828,9 @@ dependencies = [
 
 [[package]]
 name = "swc_ecma_transforms"
-version = "0.30.3"
+version = "0.30.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "49e8cfe7e5e05795c3647534e68036a1764bea326611db40451507529db68528"
+checksum = "9fb4d75e7f8ad687a36f21bd2d3159c01b0b02f5bcf07e3ad56a1034d45558a8"
 dependencies = [
  "Inflector",
  "arrayvec",
