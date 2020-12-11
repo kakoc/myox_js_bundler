@@ -293,6 +293,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0ee1c47aaa256ecabcaea351eae4a9b01ef39ed810004e298d2511ed284b1525"
 
 [[package]]
+name = "myox_js_bundler"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "serde_json",
+ "swc_common",
+ "swc_ecma_ast",
+ "swc_ecma_codegen",
+ "swc_ecma_parser",
+ "swc_ecma_transforms",
+ "swc_ecma_visit",
+ "tempfile",
+ "uuid",
+]
+
+[[package]]
 name = "new_debug_unreachable"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -412,22 +428,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c00cf8b9eafe68dde5e9eaa2cef8ee84a9336a47d566ec55ca16589633b65af7"
 dependencies = [
  "siphasher",
-]
-
-[[package]]
-name = "playground"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "serde_json",
- "swc_common",
- "swc_ecma_ast",
- "swc_ecma_codegen",
- "swc_ecma_parser",
- "swc_ecma_transforms",
- "swc_ecma_visit",
- "tempfile",
- "uuid",
 ]
 
 [[package]]

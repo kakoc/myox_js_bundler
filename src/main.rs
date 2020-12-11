@@ -1,13 +1,12 @@
 use anyhow::Result;
-use std::collections::HashMap;
-use std::collections::HashSet;
-use std::env;
-use std::fs;
-use std::io;
-use std::io::{ErrorKind, Write};
-use std::path::PathBuf;
-use std::rc::Rc;
-use std::sync::Mutex;
+use std::{
+    collections::{HashMap, HashSet},
+    env, fs, io,
+    io::{ErrorKind, Write},
+    path::PathBuf,
+    rc::Rc,
+    sync::Mutex,
+};
 use swc_common::{sync::Lrc, Globals, Mark, SourceFile, SourceMap, GLOBALS};
 use swc_ecma_ast::{
     AssignExpr, CallExpr, Expr, ExprOrSpread, ExprOrSuper, ExprStmt, Ident, Lit, Module,
@@ -26,7 +25,7 @@ fn main() -> Result<()> {
         let u_root_with_deps_top_down = root_with_deps_top_down.unwrap();
         let src = generate_bundle(u_root_with_deps_top_down);
 
-        fs::write("out", src)?;
+        fs::write("out.js", src)?;
 
         Ok(())
     } else {
@@ -385,11 +384,11 @@ fn get_path_to_file_parent_dir(file: &PathBuf) -> PathBuf {
 struct Output<W>(Rc<Mutex<W>>);
 
 impl<W: Write> Write for Output<W> {
-    fn write(&mut self, buf: &[u8]) -> io::Result<usize> {
+    fn write(&mut self, buf: &[u8]) -> Result<usize, io::Error> {
         (*self.0.lock().unwrap()).write(buf)
     }
 
-    fn flush(&mut self) -> io::Result<()> {
+    fn flush(&mut self) -> Result<(), io::Error> {
         (*self.0.lock().unwrap()).flush()
     }
 }
