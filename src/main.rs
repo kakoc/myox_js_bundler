@@ -474,7 +474,6 @@ mod test {
 
         let parsed_module = get_parsed_module(&file_path, &init_source_map());
 
-        assert!(parsed_module.is_ok());
         assert_eq!(parsed_module.unwrap().body.len(), 1);
     }
 
@@ -486,9 +485,7 @@ mod test {
         let sm = init_source_map();
         let src = js_to_common_js(get_parsed_module(&file_path, &sm).unwrap().body, sm);
 
-        assert!(src.is_ok());
         let u_src = src.unwrap();
-        dbg!(&u_src);
         assert_eq!(
             u_src,
             r#""use strict";
@@ -512,10 +509,8 @@ var _fooJs = require("./foo.js");
             sm,
         );
 
-        assert!(transformed_module.is_ok());
         let transformed_u_module = transformed_module.unwrap();
         assert_eq!(transformed_u_module.abs_path, file_path);
-        dbg!(&transformed_u_module.imports);
         assert_eq!(transformed_u_module.imports.len(), 1);
         assert_eq!(
             &transformed_u_module.imports[0].to_str().unwrap()[2..],
@@ -532,9 +527,7 @@ var _fooJs = require("./foo.js");
         writeln!(file1, "export const foo = 5;").unwrap();
 
         let root_with_deps_top_down = create_deps_tree(&file_path);
-        assert!(root_with_deps_top_down.is_ok());
         let u_root_with_deps_top_down = root_with_deps_top_down.unwrap();
-        dbg!(&u_root_with_deps_top_down);
         assert_eq!(u_root_with_deps_top_down.len(), 2);
         assert_eq!(u_root_with_deps_top_down[1].abs_path, file_path1);
     }
